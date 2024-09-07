@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Nagi\LaravelNewrelicLogApi\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelNewrelicLogApiCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-newrelic-log-api';
 
     public $description = 'My command';
 
