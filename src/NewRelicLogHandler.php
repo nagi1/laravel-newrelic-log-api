@@ -20,7 +20,7 @@ class NewrelicLogHandler extends AbstractProcessingHandler
             return;
         }
 
-        $context = collect($this->mutateContext($record->context))->filter(function ($value, $key) {
+        $context = collect($this->mutateContext($record))->filter(function ($value, $key) {
             $isClosure = ! is_string($value) && is_callable($value);
 
             return ! is_object($value) && ! $isClosure;
@@ -32,8 +32,10 @@ class NewrelicLogHandler extends AbstractProcessingHandler
         ])->dispatch($record->message, $context);
     }
 
-    public function mutateContext(array $context): array
+    public function mutateContext(LogRecord $logRecord): array
     {
+        $context = $logRecord->context;
+
         if (isset(LaravelNewrelicLogApi::$mutateContextUsing)) {
             return (array) call_user_func(LaravelNewrelicLogApi::$mutateContextUsing, $context);
         }
@@ -64,6 +66,8 @@ class NewrelicLogHandler extends AbstractProcessingHandler
             $context['attr_level'] = $context['level'];
             unset($context['level']);
         }
+
+        $context['level'] = $logRecord->level->getName();
 
         return $context;
     }
