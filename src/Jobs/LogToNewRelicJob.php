@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace Nagi\LaravelNewrelicLogApi\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -20,7 +20,7 @@ class LogToNewrelicJob implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(protected string $message, protected array $context = [])
+    public function __construct(public string $message, public array $context = [])
     {
         if ($queue = config('newrelic-log-api.queue')) {
             $this->onQueue($queue);
@@ -35,13 +35,19 @@ class LogToNewrelicJob implements ShouldQueue
         try {
             $response = app(Client::class)->send($this->message, $this->context);
 
-            event(new NewrelicLogApiResponseEvent(
-                statusCode: $response->status(),
-                jsonBody: $response->json()
-            ));
+            event(
+                app(NewrelicLogApiResponseEvent::class, [
+                    'statusCode' => $response->status(),
+                    'jsonBody' => $response->json(),
+                ])
+            );
 
         } catch (\Throwable $e) {
             report($e);
+
+            $this->fail($e);
+
+            return;
         }
     }
 }

@@ -2,10 +2,10 @@
 
 namespace Nagi\LaravelNewrelicLogApi;
 
-use App\Jobs\LogToNewrelicJob;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Level;
 use Monolog\LogRecord;
+use Nagi\LaravelNewrelicLogApi\Jobs\LogToNewrelicJob;
 
 class NewrelicLogHandler extends AbstractProcessingHandler
 {
@@ -21,16 +21,21 @@ class NewrelicLogHandler extends AbstractProcessingHandler
         }
 
         $context = collect($this->mutateContext($record->context))->filter(function ($value, $key) {
-            return ! is_object($value) && ! is_callable($value);
+            $isClosure = ! is_string($value) && is_callable($value);
+
+            return ! is_object($value) && ! $isClosure;
         })->toArray();
 
-        app(LogToNewrelicJob::class)::dispatch($record->message, $context);
+        app(LogToNewrelicJob::class, [
+            'message' => $record->message,
+            'context' => $context,
+        ])->dispatch($record->message, $context);
     }
 
     public function mutateContext(array $context): array
     {
         if (isset(LaravelNewrelicLogApi::$mutateContextUsing)) {
-            return call_user_func(LaravelNewrelicLogApi::$mutateContextUsing, $context);
+            return (array) call_user_func(LaravelNewrelicLogApi::$mutateContextUsing, $context);
         }
 
         $context['env'] = app()->environment();
@@ -52,6 +57,12 @@ class NewrelicLogHandler extends AbstractProcessingHandler
                 $context[sprintf('attr_%s', $attribute)] = $context[$attribute];
                 unset($context[$attribute]);
             }
+        }
+
+        // To not override user's log attribute
+        if (isset($context['level'])) {
+            $context['attr_level'] = $context['level'];
+            unset($context['level']);
         }
 
         return $context;

@@ -16,12 +16,9 @@ class Client
 
     public function __construct()
     {
-        $this->enabled = config('newrelic-log-api.enabled', false);
-        $this->baseUrl = config('newrelic-log-api.base_url');
-
         $this->http = Http::withHeaders(['Api-Key' => config('newrelic-log-api.api_key')])
             ->acceptJson()
-            ->baseUrl($this->baseUrl);
+            ->baseUrl(config('newrelic-log-api.base_url'));
     }
 
     /**
@@ -31,7 +28,7 @@ class Client
      */
     public function isEnabled()
     {
-        return $this->enabled;
+        return config('newrelic-log-api.enabled', false);
     }
 
     /**
@@ -44,6 +41,7 @@ class Client
             ->post('/log/v1', [
                 'timestamp' => now()->toIso8601String(),
                 'attributes' => $context,
+                'level' => $context['level'],
                 'message' => $message,
             ]);
     }
