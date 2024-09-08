@@ -20,7 +20,7 @@ return [
     /**
      * The minimum logging level at which this handler will be triggered
      */
-    'level' => env('NEWRELIC_LEVEL', 'debug'),
+    'level' => env('NEWRELIC_LEVEL', env('LOG_LEVEL')),
 
     /**
      * Retry sending the log to New Relic API
