@@ -32,6 +32,9 @@ beforeEach(function () {
     $this->partialMock(Client::class, function (MockInterface $mock) {
         $mock->shouldReceive('send')->andReturn(new Response(new Psr7Response(200, [], '')));
     });
+
+    // make sure the queue is sync
+    config(['queue.default' => 'sync']);
 });
 
 afterEach(function () {

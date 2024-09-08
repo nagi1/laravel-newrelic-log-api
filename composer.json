@@ -30,14 +30,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Nagi\\LaravelNewrelicLogApi\\": "src/",
-            "Nagi\\LaravelNewrelicLogApi\\Database\\Factories\\": "database/factories/"
+            "Nagi\\LaravelNewrelicLogApi\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Nagi\\LaravelNewrelicLogApi\\Tests\\": "tests/",
-            "Workbench\\App\\": "workbench/app/"
+            "Nagi\\LaravelNewrelicLogApi\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -69,10 +67,7 @@
         "laravel": {
             "providers": [
                 "Nagi\\LaravelNewrelicLogApi\\LaravelNewrelicLogApiServiceProvider"
-            ],
-            "aliases": {
-                "LaravelNewrelicLogApi": "Nagi\\LaravelNewrelicLogApi\\Facades\\LaravelNewrelicLogApi"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
