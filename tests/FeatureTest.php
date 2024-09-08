@@ -86,10 +86,10 @@ it('fires Event with response status code and json body after sending the log', 
             ->andReturn((new Response(new Psr7Response(200, [], '{"requestId": "d2e4a4c1-0001-be87-19e5-0191d0c81658"}'))));
     });
 
-    app(LogToNewrelicJob::class, [
-        'message' => 'Log message',
-        'context' => ['key' => 'value'],
-    ])->handle();
+    (new LogToNewrelicJob(
+        'Log message',
+        ['key' => 'value'],
+    ))->handle();
 
     Event::assertDispatched(NewrelicLogApiResponseEvent::class, function (NewrelicLogApiResponseEvent $event) {
         return $event->statusCode === 200 && $event->jsonBody === ['requestId' => 'd2e4a4c1-0001-be87-19e5-0191d0c81658'];
