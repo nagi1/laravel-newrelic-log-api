@@ -259,7 +259,7 @@ it('it will replace reserved logs attributes with a prefix', function () {
         $contextCheck = true;
 
         collect($job->context)->each(function ($value, $key) use (&$contextCheck) {
-            $keys = ['attr_message', 'attr_log', 'attr_LOG', 'attr_MESSAGE', 'attr_msg', 'attr_level'];
+            $keys = ['attr_message', 'attr_log', 'attr_LOG', 'attr_MESSAGE', 'attr_msg', 'attr_level', 'level'];
 
             if (! in_array($key, $keys)) {
                 $contextCheck = false;
@@ -275,5 +275,17 @@ it('it will replace reserved logs attributes with a prefix', function () {
         });
 
         return $job->message === 'Log message' && $contextCheck;
+    });
+});
+
+it('will pickup the correct log value', function () {
+    Queue::fake([
+        LogToNewrelicJob::class,
+    ]);
+
+    logger()->warning('Log message');
+
+    Queue::assertPushed(LogToNewrelicJob::class, function (LogToNewrelicJob $job) {
+        return $job->context['level'] === 'WARNING';
     });
 });
