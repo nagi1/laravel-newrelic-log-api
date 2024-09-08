@@ -18,6 +18,6 @@ class LaravelNewrelicLogApi
 
     public static function logHandler(): string
     {
-        return config('newrelic-log-api.log_handler');
+        return config('newrelic-log-api.log_handler', \Nagi\LaravelNewrelicLogApi\NewrelicLogHandler::class);
     }
 }
