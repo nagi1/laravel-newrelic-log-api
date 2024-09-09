@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-newrelic-log-api` will be documented in this file.
 
+## v1.0.4 - 2024-09-09
+
+### What's Changed
+
+* Remove Windows as a testing platform by @nagi1 in https://github.com/nagi1/laravel-newrelic-log-api/pull/2
+
+**Full Changelog**: https://github.com/nagi1/laravel-newrelic-log-api/compare/v1.0.1...v1.0.4
+
+**Full Changelog**: https://github.com/nagi1/laravel-newrelic-log-api/compare/v1.0.3...v1.0.4
+
 ## v1.0.3 - 2024-09-09
 
 **Full Changelog**: https://github.com/nagi1/laravel-newrelic-log-api/compare/v1.0.2...v1.0.3
