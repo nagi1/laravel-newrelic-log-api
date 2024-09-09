@@ -17,6 +17,7 @@
     ],
     "require": {
         "php": "^8.2",
+        "guzzlehttp/guzzle": "^7.0",
         "spatie/laravel-package-tools": "^1.16",
         "illuminate/contracts": "^10.0||^11.0"
     },
@@ -30,14 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Nagi\\LaravelNewrelicLogApi\\": "src/",
-            "Nagi\\LaravelNewrelicLogApi\\Database\\Factories\\": "database/factories/"
+            "Nagi\\LaravelNewrelicLogApi\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Nagi\\LaravelNewrelicLogApi\\Tests\\": "tests/",
-            "Workbench\\App\\": "workbench/app/"
+            "Nagi\\LaravelNewrelicLogApi\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -69,10 +68,7 @@
         "laravel": {
             "providers": [
                 "Nagi\\LaravelNewrelicLogApi\\LaravelNewrelicLogApiServiceProvider"
-            ],
-            "aliases": {
-                "LaravelNewrelicLogApi": "Nagi\\LaravelNewrelicLogApi\\Facades\\LaravelNewrelicLogApi"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",

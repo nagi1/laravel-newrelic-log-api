@@ -10,16 +10,17 @@ class LaravelNewrelicLogApiServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package
             ->name('laravel-newrelic-log-api')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel_newrelic_log_api_table')
-            ->hasCommand(LaravelNewrelicLogApiCommand::class);
+            ->hasConfigFile();
+    }
+
+    public function packageRegistered()
+    {
+        $this->app->singleton('newrelic-log-api', function () {
+            return new Client;
+        });
+
+        $this->app->alias('newrelic-log-api', Client::class);
     }
 }
