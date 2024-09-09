@@ -31,9 +31,9 @@ logger('newrelic-log-api')->info('Hey Mom!');
 logger()->info('Hey Mom!');
 ```
 
-## Support us
+## Support Me
 
-Does your business depend on our contributions? Reach out and support us on [Email](mailto:ahmedflnagi@gmail.com). All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
+Does your business depend on my contributions? Reach out and support me on [PayPal](https://www.paypal.com/paypalme/nagix1). All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
 
 ## Installation
 
@@ -101,6 +101,8 @@ return [
 
 ### Get your newrelic License/API
 
+https://one.newrelic.com/api-keys
+
 ### Add env values in your .env
 
 ```
@@ -113,9 +115,9 @@ NEWRELIC_BASE_URL=https://log-api.eu.newrelic.com
 
 ```
 
-### Add new relic driver to your config
+### Add new relic channel to your config
 
-In your `logging.php` add `new-relic-log-api` driver
+In your `logging.php` add `new-relic-log-api` channel
 
 ```php
         'newrelic-log-api' => [
@@ -137,6 +139,30 @@ in `logging.php`
                 'ignore_exceptions' => false,
             ],
 ```
+
+## Listen to the event
+
+If you are intrested in geting the response from the New Relic API you can listen to the event `NewrelicLogApiResponseEvent` It will have the status and the response from the API.
+
+```php
+    protected $listen = [
+        NewrelicLogApiResponseEvent::class => [
+            NewrelicLogApiResponseListener::class,
+        ],
+    ];
+```
+
+##
+
+## Note on context log (attributes)
+
+When sending one of the following attributes in the context it will be prefixed with `attr_` to avoid overriding the whole message.
+
+See: [New Relic Log API](https://docs.newrelic.com/docs/logs/log-api/introduction-log-api/#attributes)
+
+## Extending
+
+All of the classes in this package are loaded via Laravel's service container meaning you can easily replace them with your own implementation. On Your Own Risk.
 
 ## Testing
 
