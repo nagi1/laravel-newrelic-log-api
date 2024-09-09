@@ -35,7 +35,7 @@ return [
     /**
      * Queue name to use for sending logs to New Relic API
      */
-    'queue' => env('NEWRELIC_QUEUE', env('QUEUE_CONNECTION')),
+    'queue' => env('NEWRELIC_QUEUE', 'default'),
 
     /**
      * Log handler to use for sending logs to New Relic API
