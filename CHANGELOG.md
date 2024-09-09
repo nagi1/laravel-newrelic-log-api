@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-newrelic-log-api` will be documented in this file.
 
+## v1.0.1 - 2024-09-09
+
+**Full Changelog**: https://github.com/nagi1/laravel-newrelic-log-api/compare/v1.0.0...v1.0.1
+
 ## v1.0.0 - 2024-09-09
 
 ### What's Changed
