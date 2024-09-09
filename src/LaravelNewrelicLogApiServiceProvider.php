@@ -2,6 +2,7 @@
 
 namespace Nagi\LaravelNewrelicLogApi;
 
+use Nagi\LaravelNewrelicLogApi\Commands\LaravelNewrelicLogApiCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
