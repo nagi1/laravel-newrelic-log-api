@@ -1,8 +1,8 @@
 # New Relic Log API for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/nagi/laravel-newrelic-log-api.svg?style=flat-square)](https://packagist.org/packages/nagi/laravel-newrelic-log-api)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/nagi/laravel-newrelic-log-api/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/nagi/laravel-newrelic-log-api/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/nagi/laravel-newrelic-log-api/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/nagi/laravel-newrelic-log-api/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/nagi1/laravel-newrelic-log-api/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/nagi1/laravel-newrelic-log-api/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/nagi1/laravel-newrelic-log-api/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/nagi1/laravel-newrelic-log-api/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/nagi/laravel-newrelic-log-api.svg?style=flat-square)](https://packagist.org/packages/nagi/laravel-newrelic-log-api)
 
 Integrate New Relic Log API with Laravel your laravel application.
