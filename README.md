@@ -6,6 +6,8 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/nagi/laravel-newrelic-log-api.svg?style=flat-square)](https://packagist.org/packages/nagi/laravel-newrelic-log-api)
 
 Integrate New Relic Log API with Laravel your laravel application.
+It mainly utilizing queuse behind the scene to send the logs to New Relic API.
+so make sure you have queue worker running.
 
 ```php
     // in loggin.php
@@ -96,6 +98,8 @@ return [
 ];
 
 ```
+
+**🚨 Make sure that you have queue worker configured.**
 
 ## Usage
 
