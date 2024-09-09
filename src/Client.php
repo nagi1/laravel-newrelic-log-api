@@ -40,7 +40,9 @@ class Client
             ->retry(config('newrelic-log-api.retry') ?? 3, config('newrelic-log-api.retry_delay') ?? 1000)
             ->post('/log/v1', [
                 'timestamp' => now()->toIso8601String(),
-                'attributes' => $context,
+                'attributes' => array_merge($context, [
+                    'entity.name' => config('newrelic-log-api.entity_name'),
+                ]),
                 'level' => $context['level'],
                 'message' => $message,
             ]);
