@@ -29,6 +29,8 @@ beforeEach(function () {
     // make sure default log channel is set to newrelic-log-api
     config(['logging.default' => 'newrelic-log-api']);
 
+    config(['newrelic-log-api.entity_name' => 'Laravel']);
+
     $this->partialMock(Client::class, function (MockInterface $mock) {
         $mock->shouldReceive('send')->andReturn(new Response(new Psr7Response(200, [], '')));
     });

@@ -41,7 +41,7 @@ class Client
             ->post('/log/v1', [
                 'timestamp' => now()->toIso8601String(),
                 'attributes' => array_merge($context, [
-                    'entity.name' => config('newrelic-log-api.entity_name'),
+                    'entity.name' => config('newrelic-log-api.entity_name', 'Laravel'),
                 ]),
                 'level' => $context['level'],
                 'message' => $message,
