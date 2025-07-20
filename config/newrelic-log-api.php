@@ -41,4 +41,9 @@ return [
      * Log handler to use for sending logs to New Relic API
      */
     'log_handler' => \Nagi\LaravelNewrelicLogApi\NewrelicLogHandler::class,
+
+    /**
+     * New Relic log entity name aka your app name
+     */
+    'entity_name' => env('NEWRELIC_ENTITY_NAME', env('APP_NAME')),
 ];

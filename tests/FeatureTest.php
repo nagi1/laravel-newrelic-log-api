@@ -174,6 +174,7 @@ it('sends correct structure to newrelic', function () {
         expect($data)->toEqual([
             'timestamp' => now()->toIso8601String(),
             'attributes' => [
+                'entity.name' => 'Laravel',
                 'key' => 'value',
                 'nested' => [
                     'key' => 'value',
@@ -233,6 +234,7 @@ it('will user defined context mutator', function () {
         expect($data)->toEqual([
             'timestamp' => now()->toIso8601String(),
             'attributes' => [
+                'entity.name' => 'Laravel',
                 'key' => 'value',
                 'custom' => 'value',
             ],
