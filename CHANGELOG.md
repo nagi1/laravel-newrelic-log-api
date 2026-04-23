@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-newrelic-log-api` will be documented in this file.
 
+## v1.1.0 - 2026-04-23
+
+### What's Changed
+
+* Add Laravel Boost and expand package support to Laravel 13 by @Copilot in https://github.com/nagi1/laravel-newrelic-log-api/pull/4
+
+### New Contributors
+
+* @Copilot made their first contribution in https://github.com/nagi1/laravel-newrelic-log-api/pull/4
+
+**Full Changelog**: https://github.com/nagi1/laravel-newrelic-log-api/compare/v1.0.6...v1.1.0
+
 ## v1.0.6 - 2025-07-20
 
 Support Laravel 12
