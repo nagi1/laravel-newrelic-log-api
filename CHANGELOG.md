@@ -6,6 +6,12 @@ All notable changes to `laravel-newrelic-log-api` will be documented in this fil
 
 Support Laravel 12
 
+## v1.0.7 - 2026-04-23
+
+- Add Laravel Boost for local upgrade assistance
+- Support Laravel 13
+- Raise the minimum supported PHP version to 8.3
+
 ## v1.0.5 - 2024-09-09
 
 **Full Changelog**: https://github.com/nagi1/laravel-newrelic-log-api/compare/v1.0.4...v1.0.5
